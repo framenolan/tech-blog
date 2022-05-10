@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection")
-const {User,Blog} = require("../models")
+const {User,Blog,Comment} = require("../models")
 
 
 const users = [
@@ -39,8 +39,7 @@ const comments = [
     {
         body:"Totally, I saw that too!",
         UserId:3,
-        BlogId:3,
-        postedTime:"3/15/21 8:53pm"
+        BlogId:3
     }
 ]
 
@@ -51,6 +50,7 @@ const feedMe = async ()=>{
             individualHooks:true
         });
         await Blog.bulkCreate(blogs);
+        await Comment.bulkCreate(comments);
         process.exit(0);
     } catch(err){
         console.log(err)
