@@ -10,9 +10,10 @@
     <div class="blog-card">
         <h3>{{title}}</h3>
         <p>{{body}}</p>
-        <button>Delete</button>
+        <button class="deletePost" id="delete{{id}}" value="{{id}}">Delete</button>
         <hr>
     </div>
 {{/each}}
 
 <script src="/js/profile.js"></script>
+{{!-- <script src="/js/deleteblog.js"></script> --}}
