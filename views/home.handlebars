@@ -1,0 +1,10 @@
+<br>
+<h2 class="m-4">Blog Feed</h2>
+{{#each blogs}}
+    <div class="blog-card">
+        <h3>{{title}}</h3>
+        <p>{{body}}</p>
+        <p class="fst-italic">- {{User.username}} posted on {{createdAt}}</p>
+        <hr>
+    </div>
+{{/each}}

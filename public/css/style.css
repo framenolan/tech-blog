@@ -1,0 +1,57 @@
+body {
+    background-color: whitesmoke;
+}
+
+header {
+    background-color: cornflowerblue;
+}
+
+input {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+button {
+    margin-top: 3;
+    background-color: goldenrod;
+    border-radius: 3px;
+}
+
+.linkskin {
+    color: black;
+    text-decoration: none;
+}
+
+.login-card {
+    background-color: cornflowerblue;
+    border: 1pt solid black;
+    border-radius: 5px;
+    max-width: 30%;
+    margin: 4em;
+    padding: 2em;
+}
+
+.newblog-card {
+    background-color: cornflowerblue;
+    border: 1pt solid black;
+    border-radius: 5px;
+    max-width: 90%;
+    margin: 4em;
+    padding: 2em;
+}
+
+.newblog-title {
+    max-width: 90%;
+}
+
+.newblog-body {
+    max-width: 90%;
+}
+
+.blog-card {
+    /* background-color: goldenrod; */
+    margin: 4em;
+    padding: 2em;
+    border: 3px solid black;
+
+}

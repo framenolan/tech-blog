@@ -1,0 +1,18 @@
+<br>
+<h3 class="ms-4">New Blog Post:</h3>
+<form id="newBlog" class="container newblog-card">
+    <input type="text" id="title" placeholder="Blog Title" class="form-control"><br>
+    <textarea id="body" cols="30" rows="7" class="form-control"></textarea><br>
+    <button>Post</button>
+</form>
+
+{{#each blogs}}
+    <div class="blog-card">
+        <h3>{{title}}</h3>
+        <p>{{body}}</p>
+        <button>Delete</button>
+        <hr>
+    </div>
+{{/each}}
+
+<script src="/js/profile.js"></script>

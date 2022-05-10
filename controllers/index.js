@@ -13,15 +13,17 @@ router.use("/api/comments",commentRoutes)
 const frontEnd = require("./frontEndRoutes");
 router.use("/",frontEnd)
 
-router.get("/showsessions",(req,res)=>{
+router.get("/showsession",(req,res)=>{
     res.json(req.session)
 })
 
-router.get("/setfaveanimal/:faveanimal",(req,res)=>{
-    req.session.favAnimal = req.params.faveanimal;
-    console.log(req.session);
-    res.json(req.session);
-})
+// Logout User
+router.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
+    location.reload();
+  })
+
 router.get("/secretclub",(req,res)=>{
     if(!req.session.user){
         return res.status(401).json({msg:"ya gotta login to join the club!"})

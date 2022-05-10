@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Blog} = require('../models');
 
-// find all
+// Find All Blogs
 router.get("/", (req, res) => {
     Blog.findAll({})
         .then(dbBlogs => {
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
         })
 })
 
-// find one
+// Find One Blog
 router.get("/:id", (req, res) => {
     Blog.findByPk(req.params.id,{})
     .then(dbBlog => {
@@ -26,11 +26,10 @@ router.get("/:id", (req, res) => {
     })
 })
 
-// create Blog
+// Create Blog
 router.post("/", (req, res) => {
     if(!req.session.user){
-        return res.status(401).json({msg: "Please login to post"})
-        // redirect to login page perhaps?
+        return res.redirect("../login")
     }
 
     Blog.create({
@@ -47,7 +46,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// update Blog
+// Update Blog
 router.put("/:id", (req,res) => {
     Blog.update(req.body, {
         where: {
@@ -63,7 +62,7 @@ router.put("/:id", (req,res) => {
     });
 })
 
-// delete Blog
+// Delete Blog
 router.delete("/:id", (req, res) => {
     Blog.destroy({
         where: {

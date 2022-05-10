@@ -3,7 +3,7 @@ const router = express.Router();
 const {User,Blog} = require("../models/");
 const bcrypt  = require("bcrypt");
 
-//find all
+//Find All Users
 router.get("/", (req, res) => {
   User.findAll({
     include:[Blog]
@@ -16,13 +16,12 @@ router.get("/", (req, res) => {
       res.status(500).json({ msg: "an error occured", err });
     });
 });
-router.get("/logout",(req,res)=>{
-  req.session.destroy();
-  res.redirect("/")
-})
-//find one
+
+//Find One User
 router.get("/:id", (req, res) => {
-  User.findByPk(req.params.id,{})
+  User.findByPk(req.params.id,{
+    include:[Blog]
+  })
     .then(dbUser => {
       res.json(dbUser);
     })
@@ -32,7 +31,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//create user
+//Create User
 router.post("/", (req, res) => {
   User.create(req.body)
     .then(newUser => {
@@ -47,6 +46,8 @@ router.post("/", (req, res) => {
       res.status(500).json({ msg: "an error occured", err });
     });
 });
+
+// User Login
 router.post("/login", (req, res) => {
   User.findOne({
     where:{
@@ -71,7 +72,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-//update user
+//Update User
 router.put("/:id", (req, res) => {
   User.update(req.body, {
     where: {
@@ -86,7 +87,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-//delete a user
+//Delete User
 router.delete("/:id", (req, res) => {
   User.destroy({
     where: {
