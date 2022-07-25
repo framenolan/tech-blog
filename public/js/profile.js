@@ -6,7 +6,7 @@ document.querySelector("#newBlog").addEventListener("submit",e=>{
         body:document.querySelector("#body").value,
     }
 
-    fetch("/api/blogs",{
+    fetch("/api/blogs/",{
         method:"POST",
         body:JSON.stringify(blogObj),
         headers:{
